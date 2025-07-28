@@ -14,3 +14,4 @@ class JobRole {
     }
 }
 exports.JobRole = JobRole;
+//# sourceMappingURL=JobRole.js.map

@@ -4,7 +4,7 @@ exports.CreateEmployee1719100000008 = void 0;
 class CreateEmployee1719100000008 {
     async up(qr) {
         await qr.query(`
-      CREATE TABLE "Payroll"."Employee" (
+      CREATE TABLE IF NOT EXISTS "Payroll"."Employee" (
         "EmployeeID" SERIAL,
         "IdentificationNumber" VARCHAR(15) NOT NULL,
         "FirstName" VARCHAR(35) NOT NULL,
@@ -39,3 +39,4 @@ class CreateEmployee1719100000008 {
     }
 }
 exports.CreateEmployee1719100000008 = CreateEmployee1719100000008;
+//# sourceMappingURL=1719100000008-CreateEmployee.js.map

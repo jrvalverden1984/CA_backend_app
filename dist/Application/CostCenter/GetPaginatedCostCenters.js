@@ -10,3 +10,4 @@ class GetPaginatedCostCenters {
     }
 }
 exports.GetPaginatedCostCenters = GetPaginatedCostCenters;
+//# sourceMappingURL=GetPaginatedCostCenters.js.map

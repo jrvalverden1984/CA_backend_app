@@ -10,3 +10,4 @@ class UpdateJobRole {
     }
 }
 exports.UpdateJobRole = UpdateJobRole;
+//# sourceMappingURL=UpdateJobRole.js.map

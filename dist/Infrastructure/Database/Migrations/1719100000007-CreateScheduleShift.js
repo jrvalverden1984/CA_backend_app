@@ -3,9 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateScheduleShift1719100000007 = void 0;
 class CreateScheduleShift1719100000007 {
     async up(qr) {
-        //await qr.query(`CREATE SCHEMA IF NOT EXISTS "Payroll"`)
         await qr.query(`
-      CREATE TABLE "Payroll"."ScheduleShift" (
+      CREATE TABLE IF NOT EXISTS "Payroll"."ScheduleShift" (
         "ScheduleShiftID" SERIAL,
         "ScheduleID" INTEGER NOT NULL,
         "ShiftID" INTEGER NOT NULL,
@@ -24,3 +23,4 @@ class CreateScheduleShift1719100000007 {
     }
 }
 exports.CreateScheduleShift1719100000007 = CreateScheduleShift1719100000007;
+//# sourceMappingURL=1719100000007-CreateScheduleShift.js.map

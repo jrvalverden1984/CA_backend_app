@@ -10,3 +10,4 @@ class DeleteDepartment {
     }
 }
 exports.DeleteDepartment = DeleteDepartment;
+//# sourceMappingURL=DeleteDepartment.js.map

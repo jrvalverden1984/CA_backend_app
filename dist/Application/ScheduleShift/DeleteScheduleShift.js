@@ -10,3 +10,4 @@ class DeleteScheduleShift {
     }
 }
 exports.DeleteScheduleShift = DeleteScheduleShift;
+//# sourceMappingURL=DeleteScheduleShift.js.map

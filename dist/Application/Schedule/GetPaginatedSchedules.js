@@ -10,3 +10,4 @@ class GetPaginatedSchedules {
     }
 }
 exports.GetPaginatedSchedules = GetPaginatedSchedules;
+//# sourceMappingURL=GetPaginatedSchedules.js.map

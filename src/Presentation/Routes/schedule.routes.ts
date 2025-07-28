@@ -12,96 +12,158 @@ const router = express.Router()
 /**
  * @swagger
  * tags:
- *   name: Schedules
- *   description: CRUD de horarios definidos
+ *   name: Schedule
+ *   description: CRUD of Schedule
  */
 
 router.post('/', createScheduleHandler)
 /**
  * @swagger
- * /schedules:
+ * /schedule:
  *   post:
- *     summary: Crear horario
- *     tags: [Schedules]
+ *     summary: Create a Schedule
+ *     tags: [Schedule]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/ScheduleInput'
- *     responses: { 201: { description: Horario creado } }
+ *           schema: 
+ *              $ref: '#/components/schemas/ScheduleRequest'
+ *     responses:
+ *       201:
+ *         description: Schedule created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ScheduleResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.get('/:id', getScheduleByIdHandler)
 /**
  * @swagger
- * /schedules/{id}:
+ * /schedule/{id}:
  *   get:
- *     summary: Obtener horario por ID
- *     tags: [Schedules]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema: { type: integer }
- *         required: true
+ *     summary: Get Schedule by ID
+ *     tags: [Schedule]
+ *     parameters: [{ in: path, name: id, required: true, schema: { type: integer } }]
  *     responses:
- *       200: { description: Horario encontrado }
- *       404: { description: No encontrado }
+ *       200:
+ *         description: Schedule found successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ScheduleSuccess'
+ *       404:
+ *         description: Schedule not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.put('/:id', updateScheduleHandler)
 /**
  * @swagger
- * /schedules/{id}:
+ * /schedule/{id}:
  *   put:
- *     summary: Actualizar horario
- *     tags: [Schedules]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema: { type: integer }
- *         required: true
+ *     summary: Update schedule
+ *     tags: [Schedule]
+ *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema: { $ref: '#/components/schemas/ScheduleInput' }
+ *           schema: 
+ *              $ref: '#/components/schemas/ScheduleRequest'
  *     responses:
- *       200: { description: Horario actualizado }
+ *       200:
+ *         description: Schedule updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ScheduleResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.delete('/:id', deleteScheduleHandler)
 /**
  * @swagger
- * /schedules/{id}:
+ * /schedule/{id}:
  *   delete:
- *     summary: Eliminar horario
- *     tags: [Schedules]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema: { type: integer }
- *         required: true
+ *     summary: Delete schedule
+ *     tags: [Schedule]
+ *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
  *     responses:
- *       204: { description: Eliminado }
+ *       204:
+ *         description: Schedule deleted successfully
+ *       404:
+ *         description: Schedule not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.get('/', getPaginatedSchedulesHandler)
 /**
  * @swagger
- * /schedules:
+ * /schedule:
  *   get:
- *     summary: Listar horarios paginados
- *     tags: [Schedules]
+ *     summary: List schedules paginated
+ *     tags: [Schedule]
  *     parameters:
- *       - in: query
- *         name: page
- *         schema: { type: integer }
- *       - in: query
- *         name: limit
- *         schema: { type: integer }
+ *       - { in: query, name: page,  schema: { type: integer } }
+ *       - { in: query, name: limit, schema: { type: integer } }
  *     responses:
- *       200: { description: Lista de horarios }
+ *       200:
+ *         description: Schedules list successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ScheduleSuccess'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 export default router

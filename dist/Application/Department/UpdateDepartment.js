@@ -10,3 +10,4 @@ class UpdateDepartment {
     }
 }
 exports.UpdateDepartment = UpdateDepartment;
+//# sourceMappingURL=UpdateDepartment.js.map

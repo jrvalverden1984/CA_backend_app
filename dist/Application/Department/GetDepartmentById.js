@@ -10,3 +10,4 @@ class GetDepartmentById {
     }
 }
 exports.GetDepartmentById = GetDepartmentById;
+//# sourceMappingURL=GetDepartmentById.js.map

@@ -10,3 +10,4 @@ class GetPaginatedShifts {
     }
 }
 exports.GetPaginatedShifts = GetPaginatedShifts;
+//# sourceMappingURL=GetPaginatedShifts.js.map

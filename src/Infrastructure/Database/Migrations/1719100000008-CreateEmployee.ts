@@ -3,7 +3,7 @@ import { MigrationInterface, QueryRunner } from 'typeorm'
 export class CreateEmployee1719100000008 implements MigrationInterface {
   public async up(qr: QueryRunner): Promise<void> {
     await qr.query(`
-      CREATE TABLE "Payroll"."Employee" (
+      CREATE TABLE IF NOT EXISTS "Payroll"."Employee" (
         "EmployeeID" SERIAL,
         "IdentificationNumber" VARCHAR(15) NOT NULL,
         "FirstName" VARCHAR(35) NOT NULL,

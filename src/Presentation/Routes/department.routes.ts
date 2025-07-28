@@ -12,116 +12,158 @@ const router = express.Router()
 /**
  * @swagger
  * tags:
- *   name: Departments
- *   description: Operaciones sobre departamentos
+ *   name: Department
+ *   description: CRUD of Department
  */
 
+router.post('/', createDepartmentHandler)
 /**
  * @swagger
- * /departments:
+ * /department:
  *   post:
- *     summary: Crear un nuevo Department
- *     tags: [Departments]
+ *     summary: Create a Department
+ *     tags: [Department]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema:
- *             type: object
- *             required: [description]
- *             properties:
- *               description:
- *                 type: string
+ *           schema: 
+ *              $ref: '#/components/schemas/DepartmentRequest'
  *     responses:
  *       201:
- *         description: Department creado exitosamente
+ *         description: Department created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/DepartmentResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.post('/', createDepartmentHandler)
 
+router.get('/:id', getDepartmentByIdHandler)
 /**
  * @swagger
- * /departments/{id}:
+ * /department/{id}:
  *   get:
- *     summary: Obtener Department por ID
- *     tags: [Departments]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: integer
- *         required: true
+ *     summary: Get Department by ID
+ *     tags: [Department]
+ *     parameters: [{ in: path, name: id, required: true, schema: { type: integer } }]
  *     responses:
  *       200:
- *         description: Retorna un Department
+ *         description: Department found successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/DepartmentSuccess'
  *       404:
- *         description: No encontrado
+ *         description: Department not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.get('/:id', getDepartmentByIdHandler)
 
+router.put('/:id', updateDepartmentHandler)
 /**
  * @swagger
- * /departments/{id}:
+ * /department/{id}:
  *   put:
- *     summary: Actualizar un Department
- *     tags: [Departments]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: integer
- *         required: true
+ *     summary: Update department
+ *     tags: [Department]
+ *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               description:
- *                 type: string
+ *           schema: 
+ *              $ref: '#/components/schemas/DepartmentRequest'
  *     responses:
  *       200:
- *         description: Department actualizado
+ *         description: Department updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/DepartmentResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.put('/:id', updateDepartmentHandler)
 
+router.delete('/:id', deleteDepartmentHandler)
 /**
  * @swagger
- * /departments/{id}:
+ * /department/{id}:
  *   delete:
- *     summary: Eliminar un Department
- *     tags: [Departments]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: integer
- *         required: true
+ *     summary: Delete department
+ *     tags: [Department]
+ *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
  *     responses:
  *       204:
- *         description: Eliminado exitosamente
+ *         description: Department deleted successfully
+ *       404:
+ *         description: Department not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.delete('/:id', deleteDepartmentHandler)
 
+router.get('/', getPaginatedDepartmentsHandler)
 /**
  * @swagger
- * /departments:
+ * /department:
  *   get:
- *     summary: Listar Departments paginados
- *     tags: [Departments]
+ *     summary: List departments paginated
+ *     tags: [Department]
  *     parameters:
- *       - in: query
- *         name: page
- *         schema:
- *           type: integer
- *       - in: query
- *         name: limit
- *         schema:
- *           type: integer
+ *       - { in: query, name: page,  schema: { type: integer } }
+ *       - { in: query, name: limit, schema: { type: integer } }
  *     responses:
  *       200:
- *         description: Lista de Departments
+ *         description: Departments list successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/DepartmentSuccess'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.get('/', getPaginatedDepartmentsHandler)
 
 export default router

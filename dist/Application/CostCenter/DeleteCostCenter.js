@@ -10,3 +10,4 @@ class DeleteCostCenter {
     }
 }
 exports.DeleteCostCenter = DeleteCostCenter;
+//# sourceMappingURL=DeleteCostCenter.js.map

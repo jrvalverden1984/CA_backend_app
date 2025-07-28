@@ -10,3 +10,4 @@ class DeleteShift {
     }
 }
 exports.DeleteShift = DeleteShift;
+//# sourceMappingURL=DeleteShift.js.map

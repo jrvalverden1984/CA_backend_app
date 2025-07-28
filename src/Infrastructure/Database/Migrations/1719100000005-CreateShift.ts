@@ -2,10 +2,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm'
 
 export class CreateShift1719100000005 implements MigrationInterface {
   public async up(qr: QueryRunner): Promise<void> {
-    //await qr.query(`CREATE SCHEMA IF NOT EXISTS "Payroll"`)
-
     await qr.query(`
-      CREATE TABLE "Payroll"."Shift" (
+      CREATE TABLE IF NOT EXISTS "Payroll"."Shift" (
         "ShiftID" SERIAL,
         "Description" VARCHAR(180) NOT NULL,
         "Start" TIMESTAMP NOT NULL,

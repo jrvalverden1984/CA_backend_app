@@ -25,3 +25,4 @@ __decorate([
 exports.JobRoleEntity = JobRoleEntity = __decorate([
     (0, typeorm_1.Entity)({ name: 'JobRole', schema: 'Payroll' })
 ], JobRoleEntity);
+//# sourceMappingURL=JobRoleEntity.js.map

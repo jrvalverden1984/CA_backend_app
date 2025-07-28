@@ -25,3 +25,4 @@ __decorate([
 exports.DepartmentEntity = DepartmentEntity = __decorate([
     (0, typeorm_1.Entity)({ name: 'Department', schema: 'Payroll' })
 ], DepartmentEntity);
+//# sourceMappingURL=DepartmentEntity.js.map

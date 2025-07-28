@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 🏃‍♂️ Para ejecutar migraciones
 
 npm run migration:run
@@ -12,18 +10,20 @@ npm run migration:revert
 ✨ Para generar una nueva migración automáticamente
 
 npm run migration:generate src/Infrastructure/Database/Migrations/CreateNuevaTabla
-=======
 
-🏃‍♂️ Para ejecutar migraciones
+Generar valor seguro para CRYPTO_KEY
 
-npm run migration:run
+node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
 
-🔄 Para revertir la última migración
+Aquí tienes un valor seguro para tu variable de entorno CRYPTO_KEY (32 bytes en base64):
 
-npm run migration:revert
+```
+9ceVPL3edDfMNW6GHQKv3X+//BpyZDS8lGT/59Q6R+U=
+```
 
+Puedes agregarlo a tu archivo .env así:
+```
+CRYPTO_KEY=9ceVPL3edDfMNW6GHQKv3X+//BpyZDS8lGT/59Q6R+U=
+```
 
-✨ Para generar una nueva migración automáticamente
-
-npm run migration:generate src/Infrastructure/Database/Migrations/CreateNuevaTabla
->>>>>>> b0c4a9b759763b04cbd42c4bd30c79eeb3447ec0
+¿Te gustaría que te ayude a configurar el archivo .env o necesitas algo más?

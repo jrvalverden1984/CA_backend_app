@@ -12,79 +12,158 @@ const router = express.Router()
 /**
  * @swagger
  * tags:
- *   name: Shifts
- *   description: CRUD de turnos
+ *   name: Shift
+ *   description: CRUD of Shift
  */
 
 router.post('/', createShiftHandler)
 /**
  * @swagger
- * /shifts:
+ * /shift:
  *   post:
- *     summary: Crear turno
- *     tags: [Shifts]
+ *     summary: Create a Shift
+ *     tags: [Shift]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/ShiftInput'
- *     responses: { 201: { description: Turno creado } }
+ *           schema: 
+ *              $ref: '#/components/schemas/ShiftRequest'
+ *     responses:
+ *       201:
+ *         description: Shift created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ShiftResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.get('/:id', getShiftByIdHandler)
 /**
  * @swagger
- * /shifts/{id}:
+ * /shift/{id}:
  *   get:
- *     summary: Obtener turno por ID
- *     tags: [Shifts]
- *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
- *     responses: { 200: { description: Turno }, 404: { description: No encontrado } }
+ *     summary: Get Shift by ID
+ *     tags: [Shift]
+ *     parameters: [{ in: path, name: id, required: true, schema: { type: integer } }]
+ *     responses:
+ *       200:
+ *         description: Shift found successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ShiftSuccess'
+ *       404:
+ *         description: Shift not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.put('/:id', updateShiftHandler)
 /**
  * @swagger
- * /shifts/{id}:
+ * /shift/{id}:
  *   put:
- *     summary: Actualizar turno
- *     tags: [Shifts]
+ *     summary: Update shift
+ *     tags: [Shift]
  *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema: { $ref: '#/components/schemas/ShiftInput' }
- *     responses: { 200: { description: Turno actualizado } }
+ *           schema: 
+ *              $ref: '#/components/schemas/ShiftRequest'
+ *     responses:
+ *       200:
+ *         description: Shift updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ShiftResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.delete('/:id', deleteShiftHandler)
 /**
  * @swagger
- * /shifts/{id}:
+ * /shift/{id}:
  *   delete:
- *     summary: Eliminar turno
- *     tags: [Shifts]
+ *     summary: Delete shift
+ *     tags: [Shift]
  *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
- *     responses: { 204: { description: Eliminado } }
+ *     responses:
+ *       204:
+ *         description: Shift deleted successfully
+ *       404:
+ *         description: Shift not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.get('/', getPaginatedShiftsHandler)
 /**
  * @swagger
- * /shifts:
+ * /shift:
  *   get:
- *     summary: Listar turnos paginados
- *     tags: [Shifts]
+ *     summary: List shifts paginated
+ *     tags: [Shift]
  *     parameters:
- *       - in: query
- *         name: page
- *         schema: { type: integer }
- *       - in: query
- *         name: limit
- *         schema: { type: integer }
- *     responses: { 200: { description: Lista de turnos } }
+ *       - { in: query, name: page,  schema: { type: integer } }
+ *       - { in: query, name: limit, schema: { type: integer } }
+ *     responses:
+ *       200:
+ *         description: Shifts list successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ShiftSuccess'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 export default router

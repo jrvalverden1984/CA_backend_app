@@ -10,3 +10,4 @@ class DeleteEmployee {
     }
 }
 exports.DeleteEmployee = DeleteEmployee;
+//# sourceMappingURL=DeleteEmployee.js.map

@@ -9,3 +9,4 @@ class ScheduleShift {
     }
 }
 exports.ScheduleShift = ScheduleShift;
+//# sourceMappingURL=ScheduleShift.js.map

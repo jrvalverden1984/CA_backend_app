@@ -10,3 +10,4 @@ class GetPaginatedJobRoles {
     }
 }
 exports.GetPaginatedJobRoles = GetPaginatedJobRoles;
+//# sourceMappingURL=GetPaginatedJobRoles.js.map

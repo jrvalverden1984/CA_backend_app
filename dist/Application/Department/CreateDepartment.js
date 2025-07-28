@@ -10,3 +10,4 @@ class CreateDepartment {
     }
 }
 exports.CreateDepartment = CreateDepartment;
+//# sourceMappingURL=CreateDepartment.js.map

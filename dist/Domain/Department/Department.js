@@ -15,3 +15,4 @@ class Department {
     }
 }
 exports.Department = Department;
+//# sourceMappingURL=Department.js.map

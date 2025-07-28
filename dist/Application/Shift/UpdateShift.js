@@ -10,3 +10,4 @@ class UpdateShift {
     }
 }
 exports.UpdateShift = UpdateShift;
+//# sourceMappingURL=UpdateShift.js.map

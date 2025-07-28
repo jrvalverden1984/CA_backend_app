@@ -10,3 +10,4 @@ class GetPaginatedDepartments {
     }
 }
 exports.GetPaginatedDepartments = GetPaginatedDepartments;
+//# sourceMappingURL=GetPaginatedDepartments.js.map

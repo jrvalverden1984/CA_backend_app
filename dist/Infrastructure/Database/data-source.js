@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppDataSource = void 0;
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
-const UserEntity_1 = require("../Entities/UserEntity");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 exports.AppDataSource = new typeorm_1.DataSource({
@@ -18,7 +17,8 @@ exports.AppDataSource = new typeorm_1.DataSource({
     database: process.env.DB_NAME,
     synchronize: false,
     logging: true,
-    entities: [UserEntity_1.UserEntity],
+    entities: ['src/Infrastructure/**/Entities/*.ts'],
     migrations: ['src/Infrastructure/Database/Migrations/*.ts'],
     subscribers: []
 });
+//# sourceMappingURL=data-source.js.map

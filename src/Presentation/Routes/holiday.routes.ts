@@ -12,123 +12,158 @@ const router = express.Router()
 /**
  * @swagger
  * tags:
- *   name: Holidays
- *   description: CRUD de feriados
+ *   name: Holiday
+ *   description: CRUD of Holiday
  */
 
 router.post('/', createHolidayHandler)
 /**
  * @swagger
- * /holidays:
+ * /holiday:
  *   post:
- *     summary: Crear feriado
- *     tags: [Holidays]
+ *     summary: Create a Holiday
+ *     tags: [Holiday]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema:
- *             type: object
- *             required: [description, startDate]
- *             properties:
- *               description:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date-time
+ *           schema: 
+ *              $ref: '#/components/schemas/HolidayRequest'
  *     responses:
  *       201:
- *         description: Feriado creado
+ *         description: Holiday created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/HolidayResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.get('/:id', getHolidayByIdHandler)
 /**
  * @swagger
- * /holidays/{id}:
+ * /holiday/{id}:
  *   get:
- *     summary: Obtener feriado por ID
- *     tags: [Holidays]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: integer
- *         required: true
+ *     summary: Get Holiday by ID
+ *     tags: [Holiday]
+ *     parameters: [{ in: path, name: id, required: true, schema: { type: integer } }]
  *     responses:
  *       200:
- *         description: Feriado encontrado
+ *         description: Holiday found successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/HolidaySuccess'
  *       404:
- *         description: No encontrado
+ *         description: Holiday not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.put('/:id', updateHolidayHandler)
 /**
  * @swagger
- * /holidays/{id}:
+ * /holiday/{id}:
  *   put:
- *     summary: Actualizar feriado
- *     tags: [Holidays]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: integer
- *         required: true
+ *     summary: Update holiday
+ *     tags: [Holiday]
+ *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema:
- *             type: object
- *             required: [description, startDate]
- *             properties:
- *               description:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date-time
+ *           schema: 
+ *              $ref: '#/components/schemas/HolidayRequest'
  *     responses:
  *       200:
- *         description: Feriado actualizado
+ *         description: Holiday updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/HolidayResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.delete('/:id', deleteHolidayHandler)
 /**
  * @swagger
- * /holidays/{id}:
+ * /holiday/{id}:
  *   delete:
- *     summary: Eliminar feriado
- *     tags: [Holidays]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: integer
- *         required: true
+ *     summary: Delete holiday
+ *     tags: [Holiday]
+ *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
  *     responses:
  *       204:
- *         description: Eliminado
+ *         description: Holiday deleted successfully
+ *       404:
+ *         description: Holiday not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 router.get('/', getPaginatedHolidaysHandler)
 /**
  * @swagger
- * /holidays:
+ * /holiday:
  *   get:
- *     summary: Listar feriados paginados
- *     tags: [Holidays]
+ *     summary: List holidays paginated
+ *     tags: [Holiday]
  *     parameters:
- *       - in: query
- *         name: page
- *         schema:
- *           type: integer
- *       - in: query
- *         name: limit
- *         schema:
- *           type: integer
+ *       - { in: query, name: page,  schema: { type: integer } }
+ *       - { in: query, name: limit, schema: { type: integer } }
  *     responses:
  *       200:
- *         description: Lista de feriados
+ *         description: Holidays list successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/HolidaySuccess'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 
 export default router

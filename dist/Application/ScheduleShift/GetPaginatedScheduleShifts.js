@@ -10,3 +10,4 @@ class GetPaginatedScheduleShifts {
     }
 }
 exports.GetPaginatedScheduleShifts = GetPaginatedScheduleShifts;
+//# sourceMappingURL=GetPaginatedScheduleShifts.js.map

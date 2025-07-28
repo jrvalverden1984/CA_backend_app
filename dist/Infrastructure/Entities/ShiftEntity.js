@@ -49,3 +49,4 @@ __decorate([
 exports.ShiftEntity = ShiftEntity = __decorate([
     (0, typeorm_1.Entity)({ name: 'Shift', schema: 'Payroll' })
 ], ShiftEntity);
+//# sourceMappingURL=ShiftEntity.js.map

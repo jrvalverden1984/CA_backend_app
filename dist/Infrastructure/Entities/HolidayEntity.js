@@ -29,3 +29,4 @@ __decorate([
 exports.HolidayEntity = HolidayEntity = __decorate([
     (0, typeorm_1.Entity)({ name: 'Holiday', schema: 'Payroll' })
 ], HolidayEntity);
+//# sourceMappingURL=HolidayEntity.js.map

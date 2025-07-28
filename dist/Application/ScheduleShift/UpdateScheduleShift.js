@@ -10,3 +10,4 @@ class UpdateScheduleShift {
     }
 }
 exports.UpdateScheduleShift = UpdateScheduleShift;
+//# sourceMappingURL=UpdateScheduleShift.js.map

@@ -1,7 +1,17 @@
 export class User {
-  constructor(public readonly id: string, public name: string, public email: string) {}
+  constructor(
+    public readonly UserID: number,
+    public CompanyID: number,
+    public Login: string,
+    public FirstName: string,
+    public LastName: string,
+    public Password: string,
+    public ExpirationDate?: Date,
+    public Metadata?: any
+  ) {}
 
-  changeName(newName: string): void {
-    this.name = newName;
+  changeName(newFirstName: string, newLastName: string): void {
+    this.FirstName = newFirstName;
+    this.LastName = newLastName;
   }
 }

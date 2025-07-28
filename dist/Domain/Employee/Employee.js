@@ -23,3 +23,4 @@ class Employee {
     }
 }
 exports.Employee = Employee;
+//# sourceMappingURL=Employee.js.map

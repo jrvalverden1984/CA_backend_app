@@ -9,118 +9,216 @@ const router = express_1.default.Router();
 /**
  * @swagger
  * tags:
- *   name: ScheduleShifts
- *   description: CRUD de relación Horario‑Turno
+ *   name: ScheduleShift
+ *   description: CRUD of ScheduleShift
  */
 router.post('/', scheduleshift_controller_1.createScheduleShiftHandler);
 /**
  * @swagger
- * /scheduleshifts:
+ * /scheduleshift:
  *   post:
- *     summary: Crear ScheduleShift
- *     tags: [ScheduleShifts]
+ *     summary: Create a ScheduleShift
+ *     tags: [ScheduleShift]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             required: [scheduleID, shiftID]
- *             properties:
- *               scheduleID: { type: integer }
- *               shiftID: { type: integer }
- *     responses: { 201: { description: Relación creada } }
+ *              $ref: '#/components/schemas/ScheduleShiftRequest'
+ *     responses:
+ *       201:
+ *         description: ScheduleShift created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ScheduleShiftResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.get('/:id', scheduleshift_controller_1.getScheduleShiftByIdHandler);
 /**
  * @swagger
- * /scheduleshifts/{id}:
+ * /scheduleshift/{id}:
  *   get:
- *     summary: Obtener ScheduleShift por ID
- *     tags: [ScheduleShifts]
+ *     summary: Get ScheduleShift by ID
+ *     tags: [ScheduleShift]
  *     parameters: [{ in: path, name: id, required: true, schema: { type: integer } }]
- *     responses: { 200: { description: Relación }, 404: { description: No encontrado } }
+ *     responses:
+ *       200:
+ *         description: ScheduleShift found successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ScheduleShiftSuccess'
+ *       404:
+ *         description: ScheduleShift not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.put('/:id', scheduleshift_controller_1.updateScheduleShiftHandler);
 /**
  * @swagger
- * /scheduleshifts/{id}:
+ * /scheduleshift/{id}:
  *   put:
- *     summary: Actualizar ScheduleShift
- *     tags: [ScheduleShifts]
- *     parameters: [{ in: path, name: id, required: true, schema: { type: integer } }]
+ *     summary: Update scheduleshift
+ *     tags: [ScheduleShift]
+ *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               scheduleID: { type: integer }
- *               shiftID: { type: integer }
- *     responses: { 200: { description: Relación actualizada } }
+ *              $ref: '#/components/schemas/ScheduleShiftRequest'
+ *     responses:
+ *       200:
+ *         description: ScheduleShift updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ScheduleShiftResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.delete('/:id', scheduleshift_controller_1.deleteScheduleShiftHandler);
 /**
  * @swagger
- * /scheduleshifts/{id}:
+ * /scheduleshift/{id}:
  *   delete:
- *     summary: Eliminar ScheduleShift
- *     tags: [ScheduleShifts]
+ *     summary: Delete scheduleshift
+ *     tags: [ScheduleShift]
  *     parameters: [{ in: path, name: id, schema: { type: integer }, required: true }]
- *     responses: { 204: { description: Eliminado } }
+ *     responses:
+ *       204:
+ *         description: ScheduleShift deleted successfully
+ *       404:
+ *         description: ScheduleShift not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.get('/', scheduleshift_controller_1.getPaginatedScheduleShiftsHandler);
 /**
  * @swagger
- * /scheduleshifts:
+ * /scheduleshift:
  *   get:
- *     summary: Listar ScheduleShifts paginados
- *     tags: [ScheduleShifts]
+ *     summary: List scheduleshifts paginated
+ *     tags: [ScheduleShift]
  *     parameters:
- *       - in: query
- *         name: page
- *         schema: { type: integer }
- *       - in: query
- *         name: limit
- *         schema: { type: integer }
- *     responses: { 200: { description: Lista de relaciones } }
+ *       - { in: query, name: page,  schema: { type: integer } }
+ *       - { in: query, name: limit, schema: { type: integer } }
+ *     responses:
+ *       200:
+ *         description: ScheduleShifts list successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ScheduleShiftSuccess'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
+router.post('/assign', scheduleshift_controller_1.assignShiftsToScheduleHandler);
 /**
  * @swagger
- * /scheduleshifts/assign:
+ * /scheduleshift/assign:
  *   post:
- *     summary: Asignar lista de Shifts a un Schedule (alta/actualiza)
- *     tags: [ScheduleShifts]
+ *     summary: Assign shifts to schedule
+ *     tags: [ScheduleShift]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             required: [scheduleID, shiftIDs]
- *             properties:
- *               scheduleID: { type: integer }
- *               shiftIDs:
- *                 type: array
- *                 items: { type: integer }
+ *              $ref: '#/components/schemas/AssignShiftsRequest'
  *     responses:
- *       200: { description: Relaciones actualizadas }
- */
-router.post('/assign', scheduleshift_controller_1.assignShiftsToScheduleHandler);
-/**
- * @swagger
- * /schedules/{scheduleID}/shifts:
- *   get:
- *     summary: Obtener todos los Shifts asociados a un Schedule
- *     tags: [ScheduleShifts]
- *     parameters:
- *       - in: path
- *         name: scheduleID
- *         schema: { type: integer }
- *         required: true
- *     responses:
- *       200: { description: Lista de relaciones }
+ *       200:
+ *         description: Shifts assigned successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/AssignShiftsResponse'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.get('/../schedules/:scheduleID/shifts', scheduleshift_controller_1.getShiftsByScheduleHandler);
+/**
+ * @swagger
+ * /scheduleshift/schedules/{scheduleID}/shifts:
+ *   get:
+ *     summary: Get shifts by schedule
+ *     tags: [ScheduleShift]
+ *     parameters: [{ in: path, name: scheduleID, required: true, schema: { type: integer } }]
+ *     responses:
+ *       200:
+ *         description: Shifts found successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ShiftSuccess'
+ *       404:
+ *         description: Schedule not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
 exports.default = router;
+//# sourceMappingURL=scheduleshift.routes.js.map

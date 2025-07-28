@@ -10,3 +10,4 @@ class GetCostCenterById {
     }
 }
 exports.GetCostCenterById = GetCostCenterById;
+//# sourceMappingURL=GetCostCenterById.js.map

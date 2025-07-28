@@ -6,7 +6,8 @@ class CreateShema1719100000000 {
         await qr.query(`CREATE SCHEMA IF NOT EXISTS "Payroll"`);
     }
     async down(qr) {
-        await qr.query(`select 'NO SE PUEDE ELIMINAR EL SHEMA'`);
+        await qr.query(`select 'NO SE PUEDE ELIMINAR EL SHEMA [Payroll]'`);
     }
 }
 exports.CreateShema1719100000000 = CreateShema1719100000000;
+//# sourceMappingURL=1719100000000-CreateShema.js.map
