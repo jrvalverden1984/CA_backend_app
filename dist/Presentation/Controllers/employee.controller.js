@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPaginatedEmployeesHandler = exports.deleteEmployeeHandler = exports.updateEmployeeHandler = exports.getEmployeeByIdHandler = exports.createEmployeeHandler = void 0;
-const data_source_1 = require("../../Infrastructure/Database/data-source");
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 const TypeORMEmployeeRepository_1 = require("../../Infrastructure/Repositories/TypeORMEmployeeRepository");
 const CreateEmployee_1 = require("../../Application/Employee/CreateEmployee");
 const GetEmployeeById_1 = require("../../Application/Employee/GetEmployeeById");
@@ -13,9 +13,9 @@ const BadRequestError_1 = require("../../Shared/Errors/BadRequestError");
 const NotFoundError_1 = require("../../Shared/Errors/NotFoundError");
 const Logger_1 = require("../../Shared/Utils/Logger");
 const repo = new TypeORMEmployeeRepository_1.TypeORMEmployeeRepository();
-data_source_1.AppDataSource.initialize().then(() => {
-    Logger_1.Logger.info('📦 TypeORM connected to PostgreSQL - EmployeeController');
-}).catch((error) => Logger_1.Logger.error('Error connecting to TypeORM:', error));
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - EmployeeController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 const createEmployeeHandler = async (req, res, next) => {
     try {
         // Validar campos obligatorios

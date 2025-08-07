@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMScheduleRepository } from '../../Infrastructure/Repositories/TypeORMScheduleRepository'
 import { CreateSchedule } from '../../Application/Schedule/CreateSchedule'
 import { GetScheduleById } from '../../Application/Schedule/GetScheduleById'
@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMScheduleRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - ScheduleController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - ScheduleController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createScheduleHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

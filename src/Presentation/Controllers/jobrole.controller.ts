@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMJobRoleRepository } from '../../Infrastructure/Repositories/TypeORMJobRoleRepository'
 import { CreateJobRole } from '../../Application/JobRole/CreateJobRole'
 import { GetJobRoleById } from '../../Application/JobRole/GetJobRoleById'
@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMJobRoleRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - JobRoleController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - JobRoleController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createJobRoleHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMScheduleShiftRepository } from '../../Infrastructure/Repositories/TypeORMScheduleShiftRepository'
 import { CreateScheduleShift } from '../../Application/ScheduleShift/CreateScheduleShift'
 import { GetScheduleShiftById } from '../../Application/ScheduleShift/GetScheduleShiftById'
@@ -15,9 +15,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMScheduleShiftRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - ScheduleShiftController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - ScheduleShiftController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createScheduleShiftHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPaginatedShiftsHandler = exports.deleteShiftHandler = exports.updateShiftHandler = exports.getShiftByIdHandler = exports.createShiftHandler = void 0;
-const data_source_1 = require("../../Infrastructure/Database/data-source");
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 const TypeORMShiftRepository_1 = require("../../Infrastructure/Repositories/TypeORMShiftRepository");
 const CreateShift_1 = require("../../Application/Shift/CreateShift");
 const GetShiftById_1 = require("../../Application/Shift/GetShiftById");
@@ -13,9 +13,9 @@ const BadRequestError_1 = require("../../Shared/Errors/BadRequestError");
 const NotFoundError_1 = require("../../Shared/Errors/NotFoundError");
 const Logger_1 = require("../../Shared/Utils/Logger");
 const repo = new TypeORMShiftRepository_1.TypeORMShiftRepository();
-data_source_1.AppDataSource.initialize().then(() => {
-    Logger_1.Logger.info('📦 TypeORM connected to PostgreSQL - ShiftController');
-}).catch((error) => Logger_1.Logger.error('Error connecting to TypeORM:', error));
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - ShiftController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 const createShiftHandler = async (req, res, next) => {
     try {
         // Validar campos obligatorios

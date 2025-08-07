@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMDepartmentRepository } from '../../Infrastructure/Repositories/TypeORMDepartmentRepository'
 import { CreateDepartment } from '../../Application/Department/CreateDepartment'
 import { GetDepartmentById } from '../../Application/Department/GetDepartmentById'
@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMDepartmentRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - DepartmentController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - DepartmentController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createDepartmentHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

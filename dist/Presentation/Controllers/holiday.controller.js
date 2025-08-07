@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPaginatedHolidaysHandler = exports.deleteHolidayHandler = exports.updateHolidayHandler = exports.getHolidayByIdHandler = exports.createHolidayHandler = void 0;
-const data_source_1 = require("../../Infrastructure/Database/data-source");
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 const TypeORMHolidayRepository_1 = require("../../Infrastructure/Repositories/TypeORMHolidayRepository");
 const CreateHoliday_1 = require("../../Application/Holiday/CreateHoliday");
 const GetHolidayById_1 = require("../../Application/Holiday/GetHolidayById");
@@ -13,9 +13,9 @@ const BadRequestError_1 = require("../../Shared/Errors/BadRequestError");
 const NotFoundError_1 = require("../../Shared/Errors/NotFoundError");
 const Logger_1 = require("../../Shared/Utils/Logger");
 const repo = new TypeORMHolidayRepository_1.TypeORMHolidayRepository();
-data_source_1.AppDataSource.initialize().then(() => {
-    Logger_1.Logger.info('📦 TypeORM connected to PostgreSQL - HolidayController');
-}).catch((error) => Logger_1.Logger.error('Error connecting to TypeORM:', error));
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - HolidayController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 const createHolidayHandler = async (req, res, next) => {
     try {
         if (!req.body.description || req.body.description.trim() === '') {

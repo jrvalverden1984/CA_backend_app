@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMMotivePermitRepository } from '../../Infrastructure/Repositories/TypeORMMotivePermitRepository'
 import { CreateMotivePermit } from '../../Application/MotivePermit/CreateMotivePermit'
 import { GetMotivePermitById } from '../../Application/MotivePermit/GetMotivePermitById'
@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMMotivePermitRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - MotivePermitController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - MotivePermitController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createMotivePermitHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

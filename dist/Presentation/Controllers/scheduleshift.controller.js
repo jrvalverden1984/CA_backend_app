@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getShiftsByScheduleHandler = exports.assignShiftsToScheduleHandler = exports.getPaginatedScheduleShiftsHandler = exports.deleteScheduleShiftHandler = exports.updateScheduleShiftHandler = exports.getScheduleShiftByIdHandler = exports.createScheduleShiftHandler = void 0;
-const data_source_1 = require("../../Infrastructure/Database/data-source");
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 const TypeORMScheduleShiftRepository_1 = require("../../Infrastructure/Repositories/TypeORMScheduleShiftRepository");
 const CreateScheduleShift_1 = require("../../Application/ScheduleShift/CreateScheduleShift");
 const GetScheduleShiftById_1 = require("../../Application/ScheduleShift/GetScheduleShiftById");
@@ -15,9 +15,9 @@ const BadRequestError_1 = require("../../Shared/Errors/BadRequestError");
 const NotFoundError_1 = require("../../Shared/Errors/NotFoundError");
 const Logger_1 = require("../../Shared/Utils/Logger");
 const repo = new TypeORMScheduleShiftRepository_1.TypeORMScheduleShiftRepository();
-data_source_1.AppDataSource.initialize().then(() => {
-    Logger_1.Logger.info('📦 TypeORM connected to PostgreSQL - ScheduleShiftController');
-}).catch((error) => Logger_1.Logger.error('Error connecting to TypeORM:', error));
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - ScheduleShiftController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 const createScheduleShiftHandler = async (req, res, next) => {
     try {
         if (!req.body.scheduleID || req.body.scheduleID <= 0) {

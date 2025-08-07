@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMWorkPermitRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - WorkPermitController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - WorkPermitController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createWorkPermitHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

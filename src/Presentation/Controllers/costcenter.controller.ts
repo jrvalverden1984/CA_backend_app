@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMCostCenterRepository } from '../../Infrastructure/Repositories/TypeORMCostCenterRepository'
 import { CreateCostCenter } from '../../Application/CostCenter/CreateCostCenter'
 import { GetCostCenterById } from '../../Application/CostCenter/GetCostCenterById'
@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMCostCenterRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - CostCenterController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - CostCenterController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createCostCenterHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

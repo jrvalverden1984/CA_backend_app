@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPaginatedCostCentersHandler = exports.deleteCostCenterHandler = exports.updateCostCenterHandler = exports.getCostCenterByIdHandler = exports.createCostCenterHandler = void 0;
-const data_source_1 = require("../../Infrastructure/Database/data-source");
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 const TypeORMCostCenterRepository_1 = require("../../Infrastructure/Repositories/TypeORMCostCenterRepository");
 const CreateCostCenter_1 = require("../../Application/CostCenter/CreateCostCenter");
 const GetCostCenterById_1 = require("../../Application/CostCenter/GetCostCenterById");
@@ -13,9 +13,9 @@ const BadRequestError_1 = require("../../Shared/Errors/BadRequestError");
 const NotFoundError_1 = require("../../Shared/Errors/NotFoundError");
 const Logger_1 = require("../../Shared/Utils/Logger");
 const repo = new TypeORMCostCenterRepository_1.TypeORMCostCenterRepository();
-data_source_1.AppDataSource.initialize().then(() => {
-    Logger_1.Logger.info('📦 TypeORM connected to PostgreSQL - CostCenterController');
-}).catch((error) => Logger_1.Logger.error('Error connecting to TypeORM:', error));
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - CostCenterController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 const createCostCenterHandler = async (req, res, next) => {
     try {
         if (!req.body.description || req.body.description.trim() === '') {

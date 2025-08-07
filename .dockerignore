@@ -1,0 +1,9 @@
+node_modules
+dist
+Docker
+*.log
+.env
+.git
+apply-jwt-security.js
+README-JWT-Security.md
+Examples

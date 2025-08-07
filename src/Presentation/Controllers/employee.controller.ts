@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMEmployeeRepository } from '../../Infrastructure/Repositories/TypeORMEmployeeRepository'
 import { CreateEmployee } from '../../Application/Employee/CreateEmployee'
 import { GetEmployeeById } from '../../Application/Employee/GetEmployeeById'
@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMEmployeeRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - EmployeeController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - EmployeeController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createEmployeeHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

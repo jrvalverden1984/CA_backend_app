@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPaginatedDepartmentsHandler = exports.deleteDepartmentHandler = exports.updateDepartmentHandler = exports.getDepartmentByIdHandler = exports.createDepartmentHandler = void 0;
-const data_source_1 = require("../../Infrastructure/Database/data-source");
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 const TypeORMDepartmentRepository_1 = require("../../Infrastructure/Repositories/TypeORMDepartmentRepository");
 const CreateDepartment_1 = require("../../Application/Department/CreateDepartment");
 const GetDepartmentById_1 = require("../../Application/Department/GetDepartmentById");
@@ -13,9 +13,9 @@ const BadRequestError_1 = require("../../Shared/Errors/BadRequestError");
 const NotFoundError_1 = require("../../Shared/Errors/NotFoundError");
 const Logger_1 = require("../../Shared/Utils/Logger");
 const repo = new TypeORMDepartmentRepository_1.TypeORMDepartmentRepository();
-data_source_1.AppDataSource.initialize().then(() => {
-    Logger_1.Logger.info('📦 TypeORM connected to PostgreSQL - DepartmentController');
-}).catch((error) => Logger_1.Logger.error('Error connecting to TypeORM:', error));
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - DepartmentController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 const createDepartmentHandler = async (req, res, next) => {
     try {
         if (!req.body.description || req.body.description.trim() === '') {

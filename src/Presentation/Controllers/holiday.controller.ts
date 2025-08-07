@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMHolidayRepository } from '../../Infrastructure/Repositories/TypeORMHolidayRepository'
 import { CreateHoliday } from '../../Application/Holiday/CreateHoliday'
 import { GetHolidayById } from '../../Application/Holiday/GetHolidayById'
@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMHolidayRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - HolidayController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - HolidayController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createHolidayHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

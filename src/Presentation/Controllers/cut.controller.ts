@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMCutRepository } from '../../Infrastructure/Repositories/TypeORMCutRepository'
 import { CreateCut } from '../../Application/Cut/CreateCut'
 import { GetCutById } from '../../Application/Cut/GetCutById'
@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMCutRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - CutController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - CutController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createCutHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

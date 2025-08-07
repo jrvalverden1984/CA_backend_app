@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppDataSource } from '../../Infrastructure/Database/data-source'
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 import { TypeORMShiftRepository } from '../../Infrastructure/Repositories/TypeORMShiftRepository'
 import { CreateShift } from '../../Application/Shift/CreateShift'
 import { GetShiftById } from '../../Application/Shift/GetShiftById'
@@ -13,9 +13,9 @@ import { Logger } from '../../Shared/Utils/Logger'
 
 const repo = new TypeORMShiftRepository()
 
-AppDataSource.initialize().then(() => {
-  Logger.info('📦 TypeORM connected to PostgreSQL - ShiftController')
-}).catch((error) => Logger.error('Error connecting to TypeORM:', error))
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - ShiftController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 
 export const createShiftHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {

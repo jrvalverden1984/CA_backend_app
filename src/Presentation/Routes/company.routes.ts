@@ -59,6 +59,8 @@ router.get('/:id', getCompanyByIdHandler)
  *   get:
  *     summary: Get Company by ID
  *     tags: [Company]
+ *     security:
+ *       - bearerAuth: []
  *     parameters: [{ in: path, name: id, required: true, schema: { type: integer } }]
  *     responses:
  *       200:
@@ -67,6 +69,12 @@ router.get('/:id', getCompanyByIdHandler)
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/CompanySuccess'
+ *       401:
+ *         description: Unauthorized - Token inválido o expirado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  *       404:
  *         description: Company not found
  *         content:

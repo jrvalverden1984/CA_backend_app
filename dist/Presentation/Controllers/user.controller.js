@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPaginatedUserHandler = exports.deleteUserHandler = exports.updateUserHandler = exports.getUserByIdHandler = exports.createUserHandler = void 0;
 const Logger_1 = require("./../../Shared/Utils/Logger");
-const data_source_1 = require("../../Infrastructure/Database/data-source");
+//import { AppDataSource } from '../../Infrastructure/Database/data-source';
 const TypeORMUserRepository_1 = require("../../Infrastructure/Repositories/TypeORMUserRepository");
 const CreateUser_1 = require("../../Application/User/CreateUser");
 const GetUserById_1 = require("../../Application/User/GetUserById");
@@ -13,9 +13,9 @@ const ApiResponse_1 = require("../../Shared/Utils/ApiResponse");
 const BadRequestError_1 = require("../../Shared/Errors/BadRequestError");
 const NotFoundError_1 = require("../../Shared/Errors/NotFoundError");
 const repo = new TypeORMUserRepository_1.TypeORMUserRepository();
-data_source_1.AppDataSource.initialize().then(() => {
-    Logger_1.Logger.info('📦 TypeORM connected to PostgreSQL - UserController');
-}).catch((error) => Logger_1.Logger.error('Error connecting to TypeORM:', error));
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - UserController');
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error));
 const createUserHandler = async (req, res, next) => {
     try {
         if (!req.body.Login || req.body.Login.trim() === '') {

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPaginatedSchedulesHandler = exports.deleteScheduleHandler = exports.updateScheduleHandler = exports.getScheduleByIdHandler = exports.createScheduleHandler = void 0;
-const data_source_1 = require("../../Infrastructure/Database/data-source");
+//import { AppDataSource } from '../../Infrastructure/Database/data-source'
 const TypeORMScheduleRepository_1 = require("../../Infrastructure/Repositories/TypeORMScheduleRepository");
 const CreateSchedule_1 = require("../../Application/Schedule/CreateSchedule");
 const GetScheduleById_1 = require("../../Application/Schedule/GetScheduleById");
@@ -13,9 +13,9 @@ const BadRequestError_1 = require("../../Shared/Errors/BadRequestError");
 const NotFoundError_1 = require("../../Shared/Errors/NotFoundError");
 const Logger_1 = require("../../Shared/Utils/Logger");
 const repo = new TypeORMScheduleRepository_1.TypeORMScheduleRepository();
-data_source_1.AppDataSource.initialize().then(() => {
-    Logger_1.Logger.info('📦 TypeORM connected to PostgreSQL - ScheduleController');
-}).catch((error) => Logger_1.Logger.error('Error connecting to TypeORM:', error));
+// AppDataSource.initialize().then(() => {
+//   Logger.info('📦 TypeORM connected to PostgreSQL - ScheduleController')
+// }).catch((error) => Logger.error('Error connecting to TypeORM:', error))
 const createScheduleHandler = async (req, res, next) => {
     try {
         // Validar campos obligatorios
